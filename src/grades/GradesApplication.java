@@ -7,13 +7,14 @@ public class GradesApplication{
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Scanner scanner2 = new Scanner(System.in);
         //hashmap students
-        HashMap <String, Student> students = new HashMap<>();
+        HashMap<String, Student> students = new HashMap<>();
 
-        Student  Billy = new  Student<>("Billy");
-        Student  Sophie = new  Student<>("Sophie");
-        Student  Lance = new  Student<>("Lance");
-        Student  Viv = new  Student<>("Viv");
+        Student Billy = new Student<>("Billy");
+        Student Sophie = new Student<>("Sophie");
+        Student Lance = new Student<>("Lance");
+        Student Viv = new Student<>("Viv");
 
         //add grades
         Billy.addGrade(89);
@@ -62,41 +63,47 @@ public class GradesApplication{
 
         //add to the map
         students.put("billy2", Billy);
-        students.put("sophiebeans", Sophie );
+        students.put("sophiebeans", Sophie);
         students.put("Lancealot", Lance);
         students.put("Vivjeez", Viv);
 
         ArrayList<String> keys = new ArrayList<>();
-        for(String userName : students.keySet()){
+        for (String userName : students.keySet()) {
             keys.add(userName);
         }
 
         //show students
 
         System.out.println("Here are GitHub usernames of our students: ");
-        for(String userName : keys){
+        for (String userName : keys) {
             System.out.println("|" + userName + "|");
         }
 
+        System.out.print("Do you want to continue? [yes/no] ");
+        String testInput = scanner.next();
 
-        System.out.println("What student would you like to see more information on?? ");
-         String userInput = scanner.nextLine();
 
 
-         if(students.containsKey(userInput)){
-             System.out.printf("%nStudent: %s", students.get(userInput).getName(), userInput);
-             System.out.printf("%nGrade Average: %.2f", students.get(userInput).getGradeAverage());
-             students.get(userInput).getAttendanceAverage();
-         }
-         else {
-             System.out.println("Error.. Student was not found!");
-         }
+        if (testInput.equalsIgnoreCase("yes")) {
+            do {
+                System.out.println("What student would you like to see more information on?? ");
+                String userInput = scanner2.nextLine();
 
+
+                if (students.containsKey(userInput)) {
+                    System.out.printf("%nStudent: %s", students.get(userInput).getName(), userInput);
+                    System.out.printf("%nGrade Average: %.2f", students.get(userInput).getGradeAverage());
+                    students.get(userInput).getAttendanceAverage();
+                } else {
+                    System.out.println("Error.. Student was not found!");
+                }
+            } while (testInput.equalsIgnoreCase("yes"));
+
+        }else{
+            System.out.println("Thanks");
+        }
 
 
     }
-
-
-
 
 }
