@@ -79,7 +79,7 @@ public class GradesApplication{
             System.out.println("|" + userName + "|");
         }
 
-        System.out.print("Do you want to continue? [yes/no] ");
+        System.out.println("Do you want to continue? [yes/no] ");
         String testInput = scanner.next();
 
 
@@ -94,12 +94,18 @@ public class GradesApplication{
                     System.out.printf("%nStudent: %s", students.get(userInput).getName(), userInput);
                     System.out.printf("%nGrade Average: %.2f", students.get(userInput).getGradeAverage());
                     students.get(userInput).getAttendanceAverage();
-                } else {
+
+                    System.out.println("Do you want to continue? [yes/no] ");
+                     testInput = scanner.next();
+                }
+                else {
                     System.out.println("Error.. Student was not found!");
                 }
-            } while (testInput.equalsIgnoreCase("yes"));
+            }
+            while (testInput.equalsIgnoreCase("yes"));
 
-        }else{
+        }
+        else{
             System.out.println("Thanks");
         }
 
