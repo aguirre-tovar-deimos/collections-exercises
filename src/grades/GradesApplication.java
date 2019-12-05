@@ -20,17 +20,45 @@ public class GradesApplication{
         Billy.addGrade(20);
         Billy.addGrade(67);
 
+        Billy.recordAttendance("Monday", "P");
+        Billy.recordAttendance("Tuesday", "P");
+        Billy.recordAttendance("Wednesday", "P");
+        Billy.recordAttendance("Thursday", "P");
+        Billy.recordAttendance("Friday", "A");
+        //==========
         Sophie.addGrade(67);
         Sophie.addGrade(67);
         Sophie.addGrade(67);
+
+        Sophie.recordAttendance("Monday", "A");
+        Sophie.recordAttendance("Tuesday", "A");
+        Sophie.recordAttendance("Wednesday", "A");
+        Sophie.recordAttendance("Thursday", "A");
+        Sophie.recordAttendance("Friday", "A");
+
+        //===========
 
         Lance.addGrade(67);
         Lance.addGrade(67);
         Lance.addGrade(67);
 
+        Lance.recordAttendance("Monday", "P");
+        Lance.recordAttendance("Tuesday", "P");
+        Lance.recordAttendance("Wednesday", "P");
+        Lance.recordAttendance("Thursday", "P");
+        Lance.recordAttendance("Friday", "A");
+
+        //============
+
         Viv.addGrade(67);
         Viv.addGrade(67);
         Viv.addGrade(67);
+
+        Viv.recordAttendance("Monday", "P");
+        Viv.recordAttendance("Tuesday", "P");
+        Viv.recordAttendance("Wednesday", "A");
+        Viv.recordAttendance("Thursday", "P");
+        Viv.recordAttendance("Friday", "A");
 
         //add to the map
         students.put("billy2", Billy);
@@ -46,12 +74,10 @@ public class GradesApplication{
         //show students
 
         System.out.println("Here are GitHub usernames of our students: ");
-//        for (HashMap.Entry<String, Student> entry: students.entrySet()){
-//            System.out.println(" | " + entry.getValue() + " | ");
-//        }
         for(String userName : keys){
             System.out.println("|" + userName + "|");
         }
+
 
         System.out.println("What student would you like to see more information on?? ");
          String userInput = scanner.nextLine();
@@ -60,8 +86,11 @@ public class GradesApplication{
          if(students.containsKey(userInput)){
              System.out.printf("%nStudent: %s", students.get(userInput).getName(), userInput);
              System.out.printf("%nGrade Average: %.2f", students.get(userInput).getGradeAverage());
+             students.get(userInput).getAttendanceAverage();
          }
-
+         else {
+             System.out.println("Error.. Student was not found!");
+         }
 
 
 

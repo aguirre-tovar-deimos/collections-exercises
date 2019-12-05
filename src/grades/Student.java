@@ -1,13 +1,17 @@
 package grades;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import  java.util.Arrays;
+import java.util.Map;
+import java.util.HashMap;
+
+
 
 public class Student<ArraysList> {
 
     private String name;
     private ArrayList <Integer> grades;
+    private Map <String,String> attendance = new HashMap<>();
+
 
 
     //constructor
@@ -37,6 +41,30 @@ public class Student<ArraysList> {
         float average = total / grades.size();
         return average;
     }
+    public void recordAttendance(String date, String value) {
+        //a is absent
+        if (value.equalsIgnoreCase("A")) {
+            this.attendance.putIfAbsent(date, "A");
+        } else if (value.equalsIgnoreCase("P"))
+            this.attendance.putIfAbsent(date, "P");
+        else {
+            System.out.println("Enter a A or P (Absent/Present)");
+        }
+    }
+
+    //calculate students attendance
+    public void getAttendanceAverage (){
+        ArrayList <String> absences = new ArrayList<>();
+
+        for (String dates : attendance.keySet()){
+            if (attendance.get(dates).equalsIgnoreCase("A")){
+                absences.add(dates);
+            }
+        }
+        double attendanceAverage = (double) (attendance.size() - absences.size()) / attendance.size();
+        attendanceAverage *= 100;
+        System.out.printf("%nDays Student absent: %d" + "%nAttendance percentage: %.2f %n" , absences.size(), attendanceAverage);
+    }
 
 
 
@@ -47,6 +75,12 @@ public class Student<ArraysList> {
         bob.addGrade(100);
 
         System.out.println(bob.getGradeAverage());//should be 89
+//
+//        bob.recordAttendance("Monday", "p");
+//        bob.recordAttendance("te", "a");
+//        bob.recordAttendance("we", "p");
+//        bob.recordAttendance("th", "a");
+//        System.out.println(bob.getAttendanceAverage());
     }
 
 }
