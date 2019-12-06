@@ -19,7 +19,7 @@ public class ShoppingCart {
         double totalAmount = 0;
 
         System.out.println("Welcome to Fridgefetch!");
-        System.out.println("Would you like to create a grocery list?");
+        System.out.println("Would you like to create a grocery list? (YES/NO");
         String response = scanner.nextLine();
 
         if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
@@ -82,7 +82,7 @@ public class ShoppingCart {
                 keepShopping = scanner.next();
 
             }
-            while (keepShopping.equalsIgnoreCase("YES"));
+            while (keepShopping.equalsIgnoreCase("YES") || keepShopping.equalsIgnoreCase("Y"));
 
             //Sort the array by category, then item name, then qty
             Collections.sort(cart, new Comparator<ShoppingCartItems>() {
