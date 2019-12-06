@@ -8,6 +8,8 @@ public class ShoppingCart {
         String itemName;
         double itemPrice;
         double itemQuantity;
+
+        //Set the type of categories the user can choose from
         String[] categories = {"Fruits", "Veggies", "Meat", "Dairy"};
 
         ArrayList<ShoppingCartItems> cart = new ArrayList<>();
@@ -78,7 +80,7 @@ public class ShoppingCart {
 
 
                 //ask user if they want to keep shopping
-                System.out.println("Do you want to add another item? (YES/NO)");
+                System.out.println("Do you want to add another item? (YES/CHECKOUT)");
                 keepShopping = scanner.next();
 
             }
@@ -104,14 +106,11 @@ public class ShoppingCart {
                         }
                     });
 
-
-
-
             //show the items in the shoppingCart
             System.out.println("You finished shopping!");
             System.out.println("This is what you have in your shopping cart:");
             System.out.println("Category|  Item  |  Price |  Qty |  Total");
-            System.out.println("--------------------------------");
+            System.out.println("--------------------------------------------");
             //.size is the size of the list
             for (int i = 0; i < cart.size(); i++) {
                 //what you have in your cart (.get gets the element present in the list at that given index)
@@ -119,9 +118,8 @@ public class ShoppingCart {
             }
             System.out.println("-------------------");
             System.out.println("Total: " + "$" + totalAmount);
-
-
-        } else {
+        }
+        else {
             System.out.println("Good bye");
         }
 
